@@ -25,8 +25,9 @@
     <div *ngFor="let persona of personas">
         <p>Nombre y Apellido: {{persona.nombre}} {{persona.apellido}}</p>
         <p>Edad: {{persona.edad}}</p>
-        <button mat-raised-button color = "primary" (click)="editarPersona(persona)">editar</button>
-        <button mat-raised-button color = "primary" (click)="borrarPersona(persona)">Borar</button>
+        <button mat-raised-button color = "primary" (click)="editarPersona(persona)">editar</button> 
+        <button mat-raised-button color = "primary" (click)="borrarPersona(persona)">Borrar</button>  
     </div>
 
+    
 </form>

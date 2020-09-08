@@ -49,7 +49,11 @@ export class PersonaComponent implements OnInit {
       });
     }
 
-    //borrarPersona()
+    borrarPersona(persona: any){
+      this.idPersona = persona._id;
+      this.personaService.borrarPersona
+      (this.idPersona).subscribe((result) => console.log( "Eliminado" , persona ));
+    }
 
    enviar(){
     if(this.idPersona){
