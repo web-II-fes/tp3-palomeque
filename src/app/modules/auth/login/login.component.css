@@ -1,0 +1,57 @@
+h1{
+    text-align: center;
+     margin-left: 8%;
+    margin-top: 1%; 
+}
+
+p{
+    text-align: left;
+    font-weight: bolder;
+    display: block;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+  form {
+    padding: 1em;
+    border: 1px solid #5d12d4;
+    border-radius: 5px;
+    margin-top: 0.5rem; /*borde superior*/
+    margin: 5px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+  }
+
+  form button {
+    background: rgb(108, 58, 243);
+    padding: 0.5em;
+    border-radius: 5px;
+    text-align: center;
+   }
+
+  form button:hover {
+    background: rgb(230, 20, 20);
+  }
+
+ input, label {
+    padding: 13px;
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+   
+}
+input{
+    border: 1px solid #5d12d4;
+    border-radius: 5px;
+}

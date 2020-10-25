@@ -1,2 +1,8 @@
-<app-persona></app-persona>
+<button mat-button [matMenuTriggerFor]="menu" mat-flat-button color="accent">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/persona-component" >Cargar Persona</button>
+  <button mat-menu-item routerLink="/curso-component" >Cargar Curso</button>
+  <button mat-menu-item routerLink="/mostrar-curso-component">Mostrar Curso</button>
+  <button mat-menu-item routerLink="/mostrar-persona-component">Mostrar Persona</button>
+</mat-menu>
 <router-outlet></router-outlet>

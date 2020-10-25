@@ -1,0 +1,40 @@
+<div class="col-md-12">
+    <div class="card card-container">
+        <img id="profile-img" src="https://i.pinimg.com/originals/4e/f6/23/4ef623e2ccf92dffd306b374744cd1d7.png" whidth = "320" height=" 240" class="profile-img-card" />
+        <form  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="username"><b>Usuario</b></label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+                    #username="ngModel" />
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
+                    Username is required!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password"><b>Contraseña</b></label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+                    #password="ngModel" />
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
+                    <!-- <div *ngIf="password.errors.required">Password is required</div> -->
+                    <!-- <div *ngIf="password.errors.minlength">
+                        Password must be at least 6 characters
+                    </div> -->
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">
+                    Login
+                </button>
+            </div>
+            <div class="form-group">
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                    <p>Entrada Fallida: {{ errorMessage }}</p>
+                </div>
+            </div>
+        </form>
+
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+           <p>Entrando como {{ roles }}.</p> 
+        </div>
+    </div>
+</div>

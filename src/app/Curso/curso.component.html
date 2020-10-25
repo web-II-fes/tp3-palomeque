@@ -1,0 +1,42 @@
+<mat-card>
+    <h1>Formulario de Cursos</h1>
+
+    <form [formGroup]= 'formCurso'>
+        <div class="datosCurso">
+
+            <mat-form-field appearence="outline">
+                <mat-label>Nombre Curso</mat-label>
+                <input matInput type="text" formControlName="nombreCurso">
+            </mat-form-field>
+
+            <mat-form-field appearence="outline">
+                <mat-label>Profesor</mat-label>
+                <input matInput type="text" formControlName="profesor">
+            </mat-form-field>
+
+            <mat-form-field appearence="outline">
+                <mat-label>Año</mat-label>
+                <input matInput type="number" formControlName="anyo">
+            </mat-form-field>
+
+            <mat-form-field appearence="outline">
+                <mat-label>Estado</mat-label>
+                <input matInput type="number" formControlName="estado">
+            </mat-form-field>
+
+        </div>
+
+        <button mat-raised-button (click)="enviar()">Enviar</button>
+        
+        <!-- <div *ngFor="let curso of cursos">
+            <p>Nombre: {{curso.nombreCurso}}</p>
+            <p>Profesor: {{curso.profesor}}</p>
+            <p>Año: {{curso.anyo}}</p>
+            <p>Estado: {{curso.estado}}</p>
+            <button mat-raised-button color = "primary" (click)="editarCurso(curso)">editar</button> 
+            <button mat-raised-button color = "primary" (click)="borrarCurso(curso)">Borrar</button>  
+        </div> -->
+
+        
+    </form>
+</mat-card>

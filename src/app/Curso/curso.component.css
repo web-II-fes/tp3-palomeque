@@ -1,0 +1,51 @@
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: left;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  form {
+    padding: 1em;
+    background: #f8f5f5;
+    border: 1px solid #151516;
+    border-radius: 1px;
+    margin-top: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    color: blanchedalmond;
+    
+  }
+  form button {
+    background: rgb(221, 11, 11);
+    padding: 0.5em;
+    border: 0;
+  }
+  form button:hover {
+    background: rgb(110, 51, 96);
+  }
+  
+  label {
+    text-align: left;
+    display: block;
+    padding: 0.5em 1.5em;
+    color: aliceblue;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.7em;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: blanchedalmond;
+    
+    } 
+text{
+  color: aliceblue;
+}
