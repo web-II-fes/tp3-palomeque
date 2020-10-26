@@ -12,6 +12,10 @@ export class PersonaService{
 
     constructor(private httpClient: HttpClient){}
 
+    getPersonaById(idPersona: String) {
+        return this.httpClient.get(this.personaUrl + 'personaId/' + idPersona);
+    }
+    
     getPersonas(){
         return this.httpClient.get(this.personaUrl + 'persona');
     }

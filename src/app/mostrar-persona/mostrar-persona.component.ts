@@ -48,22 +48,25 @@ export class MostrarPersonaComponent implements OnInit {
     this.dataSource.push(persona);
   }
 
-  editarPersona(persona: any){
+  editarPersona(idPersona){
+    // this.router.navigate(["../persona/crearPersona/" + idPersona]);
     // this.idPersona = persona._id;
     // this.formCliente.patchValue({
-      let personatemp : Persona = {
-      nombre: persona.nombre,
-      apellido: persona.apellido,
-      edad: persona.edad
-    }
+    //   let personatemp : Persona = {
+    //   nombre: persona.nombre,
+    //   apellido: persona.apellido,
+    //   edad: persona.edad
+    // }
 
-    this.router.navigate(['/persona-component', persona]);
+    this.router.navigate(['/persona-component/', idPersona]);
   }
     
   borrarPersona(persona: any){
     this.idPersona = persona._id;
     this.personaService.borrarPersona
-    (this.idPersona).subscribe(respuesta => console.log( "Eliminado" , persona ));
+    (this.idPersona).subscribe((data: any ) =>{
+    let personaBorrada = persona;
+  });
+  location.reload();
   }
-
 }

@@ -10,8 +10,9 @@ const routes: Routes = [
   { path : 'curso-component', component: CursoComponent},
   { path : 'mostrar-curso-component', component: MostrarCursoComponent },
   { path : 'mostrar-persona-component', component: MostrarPersonaComponent },
-  { path : '', loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)}
+  { path : '', loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)},
   
+  { path : 'persona-component/:id', component: PersonaComponent},
 ];
 
 @NgModule({

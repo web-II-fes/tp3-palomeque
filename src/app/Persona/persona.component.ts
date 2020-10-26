@@ -20,14 +20,22 @@ export class PersonaComponent implements OnInit {
   constructor(private route : ActivatedRoute, private fb : FormBuilder, private router : Router, private personaService: PersonaService) { }
 
   ngOnInit() {
-      this.getPersona();	
+      // this.getPersona();	
       
       
-      this.param =this.route.snapshot.params;
+      // this.param =this.route.snapshot.params;
       
-      if (Object.keys(this.param).length) {
-        this.persona = this.param;
-      }
+      // if (Object.keys(this.param).length) {
+      //   this.persona = this.param;
+      // }
+      this.route.paramMap.subscribe((param) => {
+        debugger;
+        this.idPersona = param.get('id');
+
+        if (this.idPersona !== 'new') {
+            this.getPersonaById(this.idPersona);
+        }
+});
 
       this.initForm(this.persona);
   }
@@ -37,11 +45,20 @@ export class PersonaComponent implements OnInit {
    initForm(editarPersona : Persona){
  
     this.formCliente = this.fb.group({
-      nombre : [editarPersona ? editarPersona.nombre :'', Validators.required],
-      apellido : [editarPersona ? editarPersona.apellido :'', Validators.required],
-      edad : [editarPersona ? editarPersona.edad :'', Validators.required]
+      nombre : [editarPersona ? editarPersona.nombre:'', Validators.required],
+      apellido : [editarPersona ? editarPersona.apellido:'', Validators.required],
+      edad : [editarPersona ? editarPersona.edad:'', Validators.required]
      });
     }
+
+    getPersonaById(idPersona: String) {
+      this.personaService.getPersonaById(idPersona).subscribe((data) => {
+          debugger;
+          let personaId = data;
+
+          this.formCliente.patchValue(personaId);
+      });
+  }
 
     getPersona(){
       this.personaService.getPersonas().subscribe((personas: any) =>{
@@ -49,29 +66,16 @@ export class PersonaComponent implements OnInit {
       });
     }
 
-    editarPersona(persona: any){
-      this.idPersona = persona._id;
-      this.formCliente.patchValue({
-        nombre: persona.nombre,
-        apellido: persona.apellido,
-        edad: persona.edad
-      });
-    }
-
-    // borrarPersona(persona: any){
-    //   this.idPersona = persona._id;
-    //   this.personaService.borrarPersona
-    //   (this.idPersona).subscribe(respuesta => console.log( "Eliminado" , persona ));
-    // }
+   
 
    enviar(){
     if(this.idPersona){
       this.personaService.editarPersona(this.idPersona, this.formCliente.value).subscribe(persona =>{
-        console.log("Persona Editada: ", persona);
+        
       });
   } else {
     this.personaService.guardarPersona(this.formCliente.value).subscribe(persona => {
-      console.log("Persona Nueva: ", persona);
+      let personaNueva = persona;
     });
     }
     this.router.navigate(['/mostrar-persona-component']);
