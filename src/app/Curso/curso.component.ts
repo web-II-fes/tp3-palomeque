@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validator, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Curso } from "../Curso/claseCurso";
 import { CursoService } from './../servicios/curso.service'; 
 
 @Component({
@@ -14,18 +14,30 @@ export class CursoComponent implements OnInit {
    formCurso : FormGroup;
    cursos : any[] = [];
    idCurso : any;
+   curso : any;
+   param : any;
 
-  constructor(private fb : FormBuilder, private router : Router, private cursoService: CursoService) { }
+  constructor(private route : ActivatedRoute, private fb : FormBuilder, private router : Router, private cursoService: CursoService) { }
 
   ngOnInit() {
     	
-      this.initForm();
-      this.getCurso();
+      
+      // this.getCurso();
+
+      this.route.paramMap.subscribe((param) => {
+        
+        this.idCurso = param.get('id');
+
+        if (this.idCurso !== 'new') {
+            this.getCursoById(this.idCurso);
+        }
+        this.initForm(this.curso);
+      });
   }
 
-  nombreControl = new FormControl('User');
+  
 
-   initForm(){
+   initForm(editarCurso : Curso ){
   //    this.formCliente = this.fb.group({
     this.formCurso = this.fb.group({
       nombreCurso : ['', Validators.required],
@@ -35,36 +47,45 @@ export class CursoComponent implements OnInit {
      });
     }
 
+    getCursoById(idCurso: String) {
+      this.cursoService.getCursoById(idCurso).subscribe((data) => {
+          
+          let cursoId = data;
+
+          this.formCurso.patchValue(cursoId);
+      });
+  }
+
     getCurso(){
       this.cursoService.getCursos().subscribe((cursos: any) =>{
         this.cursos = cursos;
       });
     }
 
-    editarCurso(curso: any){
-      this.idCurso = curso._id;
-      this.formCurso.patchValue({
-        nombreCurso: curso.nombre,
-        profesor: curso.profesor,
-        anyo: curso.anyo,
-        estado: curso.estado,
-      });
-    }
+    // editarCurso(curso: any){
+    //   this.idCurso = curso._id;
+    //   this.formCurso.patchValue({
+    //     nombreCurso: curso.nombre,
+    //     profesor: curso.profesor,
+    //     anyo: curso.anyo,
+    //     estado: curso.estado,
+    //   });
+    // }
 
-    borrarCurso(curso: any){
-      this.idCurso = curso._id;
-      this.cursoService.borrarCurso
-      (this.idCurso).subscribe(respuesta => console.log( "Curso Eliminado" , curso ));
-    }
+    // borrarCurso(curso: any){
+    //   this.idCurso = curso._id;
+    //   this.cursoService.borrarCurso
+    //   (this.idCurso).subscribe(respuesta => console.log( "Curso Eliminado" , curso ));
+    // }
 
    enviar(){
     if(this.idCurso){
       this.cursoService.editarCurso(this.idCurso, this.formCurso.value).subscribe((curso) =>{
-        console.log("Curso Editado: ", curso);
+        
       });
   } else {
     this.cursoService.guardarCurso(this.formCurso.value).subscribe((curso) => {
-      console.log("Curso Nuevo: ", curso);
+      let cursoNuevo = curso;
     });
     }
     this.router.navigate(['/mostrar-curso-component']);

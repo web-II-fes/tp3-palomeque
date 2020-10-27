@@ -22,6 +22,7 @@ import { MostrarCursoComponent } from './mostrar-curso/mostrar-curso.component';
 import { MostrarPersonaComponent } from './mostrar-persona/mostrar-persona.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {environment} from '../environments/environment';
+import { ArraysComponent } from './Arrays/array.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {environment} from '../environments/environment';
     PersonaComponent,
     MostrarCursoComponent,
     MostrarPersonaComponent,
+    ArraysComponent,
     CursoComponent
  
   ],

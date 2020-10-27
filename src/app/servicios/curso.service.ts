@@ -12,6 +12,10 @@ export class CursoService{
 
     constructor(private httpClient: HttpClient){}
 
+    getCursoById(idCurso: String) {
+        return this.httpClient.get(this.cursoUrl + 'cursoId/' + idCurso);
+    }
+
     getCursos(){
         return this.httpClient.get(this.cursoUrl + 'curso');
     }
@@ -21,11 +25,11 @@ export class CursoService{
     }
 
     editarCurso(idCurso, curso) {
-        return this.httpClient.put(this.cursoUrl + 'curso' + idCurso, JSON.stringify(curso), this.httpOptions);
+        return this.httpClient.put(this.cursoUrl + 'curso/' + idCurso, JSON.stringify(curso), this.httpOptions);
 
     }
 
-    borrarCurso( idCurso ){
+    borrarCurso(idCurso){
         return this.httpClient.delete(this.cursoUrl + 'curso/' + idCurso, this.httpOptions);
     }    
 }

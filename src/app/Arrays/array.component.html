@@ -1,0 +1,14 @@
+<div *ngFor = "let persona of personas">
+    <p> Nombre Persona: {{persona.nombre}}</p>
+</div>
+
+<button type = "button" (click)="joinSplit()">Join y Split</button>
+<button type = "button" (click)="reverse()">Reverse</button>
+<button type = "button" (click)="splice()">Splice</button>
+<button type = "button" (click)="sort()">Sort</button>
+<button type = "button" (click)="indexOf('Pancho')">Index Of</button>
+<button type = "button" (click)="lastIndexOf('Francis')">Last Index Of</button>
+<button type = "button" (click)="includes('Pepe')">Includes</button>
+<button type = "button" (click)="find()">Find</button>
+<button type = "button" (click)="map()">Map</button>
+<button type = "button" (click)="filter()">Filter</button>

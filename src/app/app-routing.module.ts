@@ -4,6 +4,7 @@ import { PersonaComponent } from './Persona/persona.component';
 import { CursoComponent } from './Curso/curso.component';
 import { MostrarCursoComponent } from './mostrar-curso/mostrar-curso.component';
 import { MostrarPersonaComponent } from './mostrar-persona/mostrar-persona.component';
+import { ArraysComponent } from './Arrays/array.component';
 
 const routes: Routes = [
   { path : 'persona-component', component: PersonaComponent},
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path : '', loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)},
   
   { path : 'persona-component/:id', component: PersonaComponent},
+  { path : 'curso-component/:id', component: CursoComponent},
+  { path: 'array', component: ArraysComponent },
 ];
 
 @NgModule({

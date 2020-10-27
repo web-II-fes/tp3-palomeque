@@ -24,8 +24,21 @@
             </ng-container>
     
             <ng-container matColumnDef="estado">
-                <th mat-header-cell *matHeaderCellDef> Estado de Noticia </th>
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
                 <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="editar">
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let curso"> 
+                    <button type="button" mat-raised-button color = "primary" (click)="editarCurso(curso._id)">editar</button> 
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="borrar">
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let curso"> <button mat-raised-button color = "primary" (click)="borrarCurso(curso)" >borrar </button> </td>
+                
             </ng-container>
     
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

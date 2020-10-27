@@ -29,7 +29,7 @@ export class PersonaComponent implements OnInit {
       //   this.persona = this.param;
       // }
       this.route.paramMap.subscribe((param) => {
-        debugger;
+        
         this.idPersona = param.get('id');
 
         if (this.idPersona !== 'new') {
@@ -53,7 +53,7 @@ export class PersonaComponent implements OnInit {
 
     getPersonaById(idPersona: String) {
       this.personaService.getPersonaById(idPersona).subscribe((data) => {
-          debugger;
+          
           let personaId = data;
 
           this.formCliente.patchValue(personaId);
@@ -82,4 +82,5 @@ export class PersonaComponent implements OnInit {
    };  
   
 }
+
 

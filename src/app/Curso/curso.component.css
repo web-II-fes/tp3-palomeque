@@ -19,7 +19,7 @@ p{
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
-    color: blanchedalmond;
+    color: rgb(10, 8, 4);
     
   }
   form button {
@@ -43,9 +43,9 @@ p{
     padding: 0.7em;
     margin-bottom: 0.5rem;
     display: block;
-    color: blanchedalmond;
+    color: rgb(10, 10, 9);
     
     } 
 text{
-  color: aliceblue;
+  color: rgb(13, 14, 15);
 }
